@@ -15,7 +15,7 @@ class Category:
     """Класс категории"""
     name:str                                                          # Название категории (строка)
     description:str                                                   # Описание (строка)
-    product:list                                                      # товар (список)
+    product:list                                                      # товары (список)
 
     count_categories = 0
     count_products = 0
@@ -37,3 +37,4 @@ cat_1 = Category("Электроника", "Все для ПК", [prod_1, prod_2
 
 print(Category.count_categories)
 print(Category.count_products)
+print(cat_1)
