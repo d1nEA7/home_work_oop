@@ -1,8 +1,9 @@
 class Product:
-    name = str
-    description = str
-    price = float
-    quantity = int
+    """Класс товары"""
+    name:str                                                          # Название товара (строка)
+    description:str                                                   # Описание (строка)
+    price:float                                                  # Цена (число с копейками, float)
+    quantity:int                                                      # Количество в наличии (целое число, штуки)
     def __init__(self, name, description, price, quantity):
         self.name = name
         self.description = description
@@ -11,10 +12,28 @@ class Product:
 
 
 class Category:
-    name = str
-    description = str
-    product = list
+    """Класс категории"""
+    name:str                                                          # Название категории (строка)
+    description:str                                                   # Описание (строка)
+    product:list                                                      # товар (список)
+
+    count_categories = 0
+    count_products = 0
+
     def __init__(self, name, description, product):
         self.name = name
         self.description = description
         self.product = product
+
+        Category.count_categories += 1
+        Category.count_products += len(product)
+
+# Создаём товары
+prod_1 = Product("Ноутбук", "Игровой", 100000, 10 )
+prod_2 = Product("Мышь", "Игровая", 4000, 30 )
+
+# Создаём категорию
+cat_1 = Category("Электроника", "Все для ПК", [prod_1, prod_2])
+
+print(Category.count_categories)
+print(Category.count_products)
