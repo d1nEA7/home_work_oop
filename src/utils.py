@@ -27,14 +27,14 @@ class Category:
 
         Category.count_categories += 1
         Category.count_products += len(product)
+        print(Category.count_products)
 
-# Создаём товары
-prod_1 = Product("Ноутбук", "Игровой", 100000, 10 )
-prod_2 = Product("Мышь", "Игровая", 4000, 30 )
+if __name__ == "__main__":
+    # Создаём товары
+    prod_1 = Product("Ноутбук", "Игровой", 100000, 10 )
+    prod_2 = Product("Мышь", "Игровая", 4000, 30 )
 
-# Создаём категорию
-cat_1 = Category("Электроника", "Все для ПК", [prod_1, prod_2])
+    # Создаём категорию
+    cat_1 = Category("Электроника", "Все для ПК", [prod_1, prod_2])
 
-print(Category.count_categories)
-print(Category.count_products)
-print(cat_1)
+
