@@ -10,11 +10,11 @@ class Product:
         self.quantity = quantity
 
 
-class quantity:
+class Category:
     name = str
     description = str
-    product = str
-    def __init__(self, name, discription, product):
+    product = list
+    def __init__(self, name, description, product):
         self.name = name
-        self.discription = discription
+        self.description = description
         self.product = product
