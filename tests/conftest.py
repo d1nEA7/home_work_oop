@@ -2,6 +2,7 @@ import pytest
 
 from src.utils import Product, Category
 
+
 @pytest.fixture
 def products():
     return Product(
@@ -22,8 +23,6 @@ def products_2():
     )
 
 
-
-
 @pytest.fixture
 def categories(products, products_2):
     prod_1 = products
@@ -34,6 +33,7 @@ def categories(products, products_2):
         # product = [prod_1, prod_2],
         product=[prod_1, prod_2],
     )
+
 
 """Задание 3
 Напишите тесты для классов, которые проверяют:

@@ -7,12 +7,3 @@ def test_category_init(categories):
     assert len(categories.product) == 2
     assert categories.count_products == 2
     assert categories.count_categories == 1
-
-
-
-
-
-
-
-
-
