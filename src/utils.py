@@ -32,6 +32,14 @@ class Category:
         Category.count_products += len(products)
         print(Category.count_products)
 
+    @property
+    def products(self):
+        return self.__products
+
+    @property
+    def product_count(self):
+        return len(self.__products)
+
     def add_product(self, products ):
         self.__products.append(products)
         Category.count_products += 1
