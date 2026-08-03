@@ -40,9 +40,24 @@ class Category:
     def product_count(self):
         return len(self.__products)
 
-    def add_product(self, products ):
-        self.__products.append(products)
+    def add_product(self, product ):
+        self.__products.append(product)
         Category.count_products += 1
+
+
+    @property
+    def list_products(self):
+        result = []
+        for product in self.__products:
+            result.append(f"{product.name}, {product.price} руб. Остаток: {product.quantity} шт.")
+
+        return result
+
+
+
+
+
+
 
 if __name__ == "__main__":
     # Создаём товары
