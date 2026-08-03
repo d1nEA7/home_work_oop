@@ -1,6 +1,5 @@
 class Product:
     """Класс товары"""
-
     name: str  # Название товара (строка)
     description: str  # Описание (строка)
     price: float  # Цена (число с копейками, float)
@@ -13,25 +12,29 @@ class Product:
         self.quantity = quantity
 
 
+
+
 class Category:
     """Класс категории"""
-
     name: str  # Название категории (строка)
     description: str  # Описание (строка)
-    product: list  # товары (список)
+    products: list  # товары (список)
 
     count_categories = 0
     count_products = 0
 
-    def __init__(self, name, description, product):
+    def __init__(self, name, description, products):
         self.name = name
         self.description = description
-        self.product = product
+        self.__products = products
 
         Category.count_categories += 1
-        Category.count_products += len(product)
+        Category.count_products += len(products)
         print(Category.count_products)
 
+    def add_product(self, products ):
+        self.__products.append(products)
+        Category.count_products += 1
 
 if __name__ == "__main__":
     # Создаём товары
