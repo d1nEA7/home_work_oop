@@ -13,8 +13,8 @@ class Product:
         self.quantity = quantity
 
     @classmethod
-    """метод класса создание нового продукта"""
     def new_product(cls, data: dict) -> Product:
+        """метод класса создание нового продукта"""
         name = data.get("name")  # "Samsung Galaxy S23 Ultra"
         description = data.get("description")
         price = data.get("price")
