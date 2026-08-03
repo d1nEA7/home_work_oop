@@ -18,19 +18,19 @@ class Category:
 
     name: str  # Название категории (строка)
     description: str  # Описание (строка)
-    product: list  # товары (список)
+    products: list  # товары (список)
 
-    count_categories = 0
-    count_products = 0
+    category_count = 0
+    product_count = 0
 
-    def __init__(self, name, description, product):
+    def __init__(self, name, description, products):
         self.name = name
         self.description = description
-        self.product = product
+        self.products = products
 
-        Category.count_categories += 1
-        Category.count_products += len(product)
-        print(Category.count_products)
+        Category.category_count += 1
+        Category.product_count += len(products)
+        print(Category.product_count)
 
 
 if __name__ == "__main__":

@@ -4,6 +4,8 @@
 def test_category_init(categories):
     assert categories.name == "Электроника"
     assert categories.description == "Мобильная"
-    assert len(categories.product) == 2
+    assert len(categories.products) == 2
     assert categories.count_products == 2
     assert categories.count_categories == 1
+
+def test_
