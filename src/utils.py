@@ -23,7 +23,7 @@ class Product:
 
     @property
     def price(self):
-        """вызов приватного price """
+        """вызов приватного price"""
         return self.__price
 
     @price.setter
