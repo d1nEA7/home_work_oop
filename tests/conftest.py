@@ -30,7 +30,6 @@ def categories(products, products_2):
     return Category(
         name="Электроника",
         description="Мобильная",
-        # product = [prod_1, prod_2],
         products=[prod_1, prod_2],
     )
 
