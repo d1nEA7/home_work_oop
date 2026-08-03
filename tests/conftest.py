@@ -1,6 +1,7 @@
 import pytest
 
-from src.utils import Product, Category
+from src.utils import Category, Product
+
 
 @pytest.fixture
 def products():
@@ -22,8 +23,6 @@ def products_2():
     )
 
 
-
-
 @pytest.fixture
 def categories(products, products_2):
     prod_1 = products
@@ -31,19 +30,5 @@ def categories(products, products_2):
     return Category(
         name="Электроника",
         description="Мобильная",
-        # product = [prod_1, prod_2],
-        product=[prod_1, prod_2],
+        products=[prod_1, prod_2],
     )
-
-"""Задание 3
-Напишите тесты для классов, которые проверяют:
-
-корректность инициализации объектов класса Category
-,
-корректность инициализации объектов класса Product
-,
-подсчет количества продуктов,
-подсчет количества категорий.
-
-
-#pytest #assert #fixtures"""
