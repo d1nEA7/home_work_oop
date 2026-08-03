@@ -1,6 +1,6 @@
 import pytest
 
-from src.utils import Product, Category
+from src.utils import Category, Product
 
 
 @pytest.fixture
@@ -32,5 +32,3 @@ def categories(products, products_2):
         description="Мобильная",
         products=[prod_1, prod_2],
     )
-
-

@@ -1,6 +1,3 @@
-from src.utils import Category, Product
-
-
 def test_category_init(categories):
     """тесты для инициализации категорий"""
     assert categories.name == "Электроника"
@@ -9,12 +6,14 @@ def test_category_init(categories):
     assert categories.product_count == 2
     assert categories.category_count == 1
 
+
 def test_product_init(products):
     """тесты для инициализации продуктов_1"""
     assert products.name == "Планшет"
     assert products.description == "Игровой"
     assert products.price == 20.00
     assert products.quantity == 2
+
 
 def test_product_init_2(products_2):
     """тесты для инициализации продуктов_2"""
