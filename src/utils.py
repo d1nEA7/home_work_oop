@@ -1,7 +1,6 @@
-
-
 class Product:
     """Класс товары"""
+
     name: str  # Название товара (строка)
     description: str  # Описание (строка)
     price: float  # Цена (число с копейками, float)
@@ -13,8 +12,8 @@ class Product:
         self.__price = price
         self.quantity = quantity
 
-
     @classmethod
+    """метод класса создание нового продукта"""
     def new_product(cls, data: dict) -> Product:
         name = data.get("name")  # "Samsung Galaxy S23 Ultra"
         description = data.get("description")
@@ -24,19 +23,21 @@ class Product:
 
     @property
     def price(self):
+        """вызов приватного price """
         return self.__price
 
     @price.setter
     def price(self, value):
+        """возвращает значение цены если больше 0"""
         if value <= 0:
             print("Цена не должна быть нулевая или отрицательная")
         else:
             self.__price = value
 
 
-
 class Category:
     """Класс категории"""
+
     name: str  # Название категории (строка)
     description: str  # Описание (строка)
     products: list  # товары (список)
@@ -45,6 +46,7 @@ class Category:
     count_products = 0
 
     def __init__(self, name, description, products):
+
         self.name = name
         self.description = description
         self.__products = products
@@ -55,29 +57,29 @@ class Category:
 
     @property
     def products(self):
+        """возвращает приватные продукты"""
         return self.__products
 
     @property
     def product_count(self):
+        """считает количество продуктов"""
         return len(self.__products)
 
-    def add_product(self, product ):
+    def add_product(self, product):
+        """добавляет продукты"""
         self.__products.append(product)
         Category.count_products += 1
 
-
     @property
     def list_products(self):
+        """создает список продуктов с описанием"""
         result = []
         for product in self.__products:
-            result.append(f"{product.name}, {product.price} руб. Остаток: {product.quantity} шт.")
+            result.append(
+                f"{product.name}, {product.price} руб. Остаток: {product.quantity} шт."
+            )
 
         return result
-
-
-
-
-
 
 
 if __name__ == "__main__":

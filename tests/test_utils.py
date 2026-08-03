@@ -1,4 +1,4 @@
-from src.utils import Product, Category
+from src.utils import Category, Product
 
 
 def test_category_init(categories):
@@ -18,7 +18,6 @@ def test_product_init(products):
     assert products.quantity == 2
 
 
-
 def test_product_init_2(products_2):
     """тесты для инициализации продуктов_2"""
     assert products_2.name == "Смартфон"
@@ -26,13 +25,14 @@ def test_product_init_2(products_2):
     assert products_2.price == 90.00
     assert products_2.quantity == 15
 
+
 def test_new_product():
     """тесты для метода new_product"""
     data = {
         "name": "Телефон",
         "description": "Смартфон",
         "price": 50000,
-        "quantity": 10
+        "quantity": 10,
     }
     product = Product.new_product(data)
 
@@ -52,6 +52,7 @@ def test_price_setter():
     product.price = -100
     assert product.price == 800
 
+
 def test_count_categories():
     """тест счетчик категорий"""
     init_count = Category.count_categories
@@ -60,4 +61,3 @@ def test_count_categories():
     cat2 = Category("Одежда", "Описание", [])
     assert Category.count_categories == init_count + 2
     assert Category.count_categories == 3
-
