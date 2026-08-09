@@ -34,6 +34,9 @@ class Product:
         else:
             self.__price = value
 
+    def __str__(self):
+        """строковое отображение: Название продукта, 80 руб. Остаток: 15 шт. """
+        return f"{self.name}, {self.price}, {self.quantity}"
 
 class Category:
     """Класс категории"""
