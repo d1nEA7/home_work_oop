@@ -38,6 +38,13 @@ class Product:
         """строковое отображение: Название продукта, 80 руб. Остаток: 15 шт. """
         return f"{self.name}, {self.price}, {self.quantity}"
 
+    def __add__(self, other):
+        """сложение стоимости товаров"""
+        price_prod_1 = self.price * self.quantity
+        price_prod_2 = other.price * other.quantity
+        return price_prod_1 + price_prod_2
+
+
 class Category:
     """Класс категории"""
 
