@@ -35,14 +35,17 @@ class Product:
             self.__price = value
 
     def __str__(self):
-        """строковое отображение: Название продукта, 80 руб. Остаток: 15 шт. """
-        return f"{self.name}, {self.price}, {self.quantity}"
+        """строковое отображение: Название продукта, 80 руб. Остаток: 15 шт."""
+        return f"{self.name}, {self.price} руб. Остаток: {self.quantity} шт."
 
     def __add__(self, other):
         """сложение стоимости товаров"""
         price_prod_1 = self.price * self.quantity
         price_prod_2 = other.price * other.quantity
         return price_prod_1 + price_prod_2
+
+    def __repr__(self) -> str:
+        return self.__str__()
 
 
 class Category:
@@ -63,7 +66,7 @@ class Category:
 
         Category.count_categories += 1
         Category.count_products += len(products)
-        print(Category.count_products)
+
 
     @property
     def products(self):
@@ -85,12 +88,13 @@ class Category:
         """создает список продуктов с описанием"""
         return [str(product) for product in self.__products]
 
-    def __str__(self):
+    def __str__(self) -> str:
         """количество продуктов в категории"""
         total_quantity = 0
         for product in self.__products:
             total_quantity += product.quantity
         return f"{self.name}, количество продуктов: {total_quantity} шт."
+
 
 if __name__ == "__main__":
     # Создаём товары
