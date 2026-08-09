@@ -76,14 +76,14 @@ class Category:
     @property
     def list_products(self):
         """создает список продуктов с описанием"""
-        result = []
+        return [str(product) for product in self.__products]
+
+    def __str__(self):
+        """количество продуктов в категории"""
+        total_quantity = 0
         for product in self.__products:
-            result.append(
-                f"{product.name}, {product.price} руб. Остаток: {product.quantity} шт."
-            )
-
-        return result
-
+            total_quantity += product.quantity
+        return f"{self.name}, количество продуктов: {total_quantity} шт."
 
 if __name__ == "__main__":
     # Создаём товары
