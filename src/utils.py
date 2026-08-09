@@ -67,7 +67,6 @@ class Category:
         Category.count_categories += 1
         Category.count_products += len(products)
 
-
     @property
     def products(self):
         """возвращает приватные продукты"""
