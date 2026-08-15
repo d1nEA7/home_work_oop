@@ -94,6 +94,52 @@ class Category:
             total_quantity += product.quantity
         return f"{self.name}, количество продуктов: {total_quantity} шт."
 
+class Smartphone(Product):
+    """класс Смартфоны"""
+
+    efficiency:                     #производительность
+    model: str                      #модель
+    memory: int                     #объем встроенной памяти
+    color: str                      #цвет
+
+    def __init__(self, efficiency, model, memory, color, name, description, price, quantity):
+        super().__init__(name, description, price, quantity)
+        self.efficiency = efficiency
+        self.model = model
+        self.memory = memory
+        self.color = color
+
+
+
+
+class LawnGrass(Product):
+    """класс Трава газонная"""
+
+    country: str                        #страна-производитель
+    germination_period: int             #срок прорастания
+    color: str                          #цвет
+
+    def __init__(self, country, germination_period, color, name, description, price, quantity):
+        super().__init__(name, description, price, quantity)
+        self.country = country
+        self.germination_period = germination_period
+        self.color = color
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 if __name__ == "__main__":
     # Создаём товары
