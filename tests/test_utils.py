@@ -1,7 +1,6 @@
 import pytest
 
 from src.utils import Category, LawnGrass, Product, Smartphone
-from tests.conftest import lawn_grass_1, smartphone_1
 
 
 def test_category_init(categories):
