@@ -40,9 +40,12 @@ class Product:
 
     def __add__(self, other):
         """сложение стоимости товаров"""
-        price_prod_1 = self.price * self.quantity
-        price_prod_2 = other.price * other.quantity
-        return price_prod_1 + price_prod_2
+        if type(self) is not type(other):
+            raise ValueError("Складывать можно только из одинаковых классов продукты.")
+        else:
+            price_prod_1 = self.price * self.quantity
+            price_prod_2 = other.price * other.quantity
+            return price_prod_1 + price_prod_2
 
     def __repr__(self) -> str:
         return self.__str__()
@@ -79,6 +82,12 @@ class Category:
 
     def add_product(self, product):
         """добавляет продукты"""
+        if not isinstance(product, Product):
+            raise ValueError(
+                "Кроме смартфонов, травы газонной и других продуктов,"
+                " в список нельзя добавлять ничего другого."
+            )
+
         self.__products.append(product)
         Category.count_products += 1
 
@@ -94,15 +103,18 @@ class Category:
             total_quantity += product.quantity
         return f"{self.name}, количество продуктов: {total_quantity} шт."
 
+
 class Smartphone(Product):
     """класс Смартфоны"""
 
-    efficiency:                     #производительность
-    model: str                      #модель
-    memory: int                     #объем встроенной памяти
-    color: str                      #цвет
+    efficiency: int  # производительность
+    model: str  # модель
+    memory: int  # объем встроенной памяти
+    color: str  # цвет
 
-    def __init__(self, efficiency, model, memory, color, name, description, price, quantity):
+    def __init__(
+        self, name, description, price, quantity, efficiency, model, memory, color
+    ):
         super().__init__(name, description, price, quantity)
         self.efficiency = efficiency
         self.model = model
@@ -110,35 +122,20 @@ class Smartphone(Product):
         self.color = color
 
 
-
-
 class LawnGrass(Product):
     """класс Трава газонная"""
 
-    country: str                        #страна-производитель
-    germination_period: int             #срок прорастания
-    color: str                          #цвет
+    country: str  # страна-производитель
+    germination_period: str  # срок прорастания
+    color: str  # цвет
 
-    def __init__(self, country, germination_period, color, name, description, price, quantity):
+    def __init__(
+        self, name, description, price, quantity, country, germination_period, color
+    ):
         super().__init__(name, description, price, quantity)
         self.country = country
         self.germination_period = germination_period
         self.color = color
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 if __name__ == "__main__":

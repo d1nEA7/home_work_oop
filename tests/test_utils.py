@@ -1,4 +1,7 @@
-from src.utils import Category, Product
+import pytest
+
+from src.utils import Category, LawnGrass, Product, Smartphone
+from tests.conftest import lawn_grass_1, smartphone_1
 
 
 def test_category_init(categories):
@@ -79,3 +82,45 @@ def test_add_products(products_1, products_2):
     assert (products_1.price * products_1.quantity) + (
         products_2.price * products_2.quantity
     ) == 1390
+
+
+def test_smartphone_init(smartphone_1):
+    """создание объекта класса смартфон"""
+    assert smartphone_1.name == "Samsung Galaxy S23 Ultra"
+    assert smartphone_1.description == "256GB, Серый цвет, 200MP камера"
+    assert smartphone_1.price == 100000.0
+    assert smartphone_1.quantity == 10
+    assert smartphone_1.efficiency == 95.5
+    assert smartphone_1.model == "S23 Ultra"
+    assert smartphone_1.memory == 256.0
+    assert smartphone_1.color == "Серый"
+
+
+def test_lawn_grass_init(lawn_grass_1):
+    """создание объекта класса lawn_grass"""
+    assert lawn_grass_1.name == "Газонная трава"
+    assert lawn_grass_1.description == "Элитная трава для газона"
+    assert lawn_grass_1.price == 600.0
+    assert lawn_grass_1.quantity == 2
+    assert lawn_grass_1.country == "Россия"
+    assert lawn_grass_1.germination_period == "7 дней"
+    assert lawn_grass_1.color == "Зеленый"
+
+
+def test_prod_default_add(smartphone_1, lawn_grass_1):
+    """сложение товаров разных категорий"""
+    with pytest.raises(ValueError):
+        result = smartphone_1 + lawn_grass_1
+    assert isinstance(
+        lawn_grass_1, LawnGrass
+    )  # проверка, что фикстура lawn_grass_1 использует класс LawnGrass
+
+
+def test_add_prod(smartphone_1, smartphone_2):
+    """сложение товаров одной категории"""
+    result = smartphone_1 + smartphone_2
+    assert result == 1025000.00
+
+    assert isinstance(
+        smartphone_1, Smartphone
+    )  # проверка, что фикстура smartphone_1 использует класс Smartphone

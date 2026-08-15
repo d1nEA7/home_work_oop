@@ -1,6 +1,6 @@
 import pytest
 
-from src.utils import Category, Product
+from src.utils import Category, LawnGrass, Product, Smartphone
 
 
 @pytest.fixture
@@ -34,4 +34,48 @@ def categories(products_1, products_2):
         name="Электроника",
         description="Мобильная",
         products=[prod_1, prod_2],
+    )
+
+
+@pytest.fixture
+def smartphone_1():
+    """фикстура для класса смартфон"""
+    return Smartphone(
+        name="Samsung Galaxy S23 Ultra",
+        description="256GB, Серый цвет, 200MP камера",
+        price=100000.0,
+        quantity=10,
+        efficiency=95.5,
+        model="S23 Ultra",
+        memory=256,
+        color="Серый",
+    )
+
+
+@pytest.fixture
+def smartphone_2():
+    """фикстура для класса смартфон 2"""
+    return Smartphone(
+        name="poco X5 5G",
+        description="256GB, Черный цвет, 48MP камера",
+        price=25000.0,
+        quantity=1,
+        efficiency=90.5,
+        model="X5 5G",
+        memory=256,
+        color="Черный",
+    )
+
+
+@pytest.fixture
+def lawn_grass_1():
+    """фикстура для класса lawn_grass"""
+    return LawnGrass(
+        name="Газонная трава",
+        description="Элитная трава для газона",
+        price=600.0,
+        quantity=2,
+        country="Россия",
+        germination_period="7 дней",
+        color="Зеленый",
     )
