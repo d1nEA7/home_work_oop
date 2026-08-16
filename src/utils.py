@@ -1,15 +1,26 @@
-from abc import ABC, abstractclassmethod, abstractmethod
+from abc import ABC, abstractmethod
 
 
 class BaseProduct(ABC):
     @abstractmethod
-    def __init__(self):
+    def __init__(self, name, description, price, quantity):
+        pass
+
+    @abstractmethod
+    def __str__(self):
         pass
 
 
 
 
-class Product(BaseProduct):
+
+class LogMixin:
+    def __init__(self, *args, **kwargs):
+        print(f"Создан объект класса {self.__class__.__name__} с параметрами: {args}")
+        super().__init__(*args, **kwargs)
+
+
+class Product(LogMixin, BaseProduct):
     """Класс товары"""
 
     name: str  # Название товара (строка)
@@ -18,6 +29,7 @@ class Product(BaseProduct):
     quantity: int  # Количество в наличии (целое число, штуки)
 
     def __init__(self, name, description, price, quantity):
+        super().__init__(name, description, price, quantity)
         self.name = name
         self.description = description
         self.__price = price
@@ -69,7 +81,7 @@ class Category:
     description: str  # Описание (строка)
     products: list  # товары (список)
 
-    count_categories = 0
+    category_count = 0
     count_products = 0
 
     def __init__(self, name, description, products):
@@ -78,7 +90,7 @@ class Category:
         self.description = description
         self.__products = products
 
-        Category.count_categories += 1
+        Category.category_count += 1
         Category.count_products += len(products)
 
     @property
