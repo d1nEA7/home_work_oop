@@ -1,6 +1,6 @@
 import pytest
 
-from src.utils import Category, LawnGrass, Product, Smartphone
+from src.utils import Category, LawnGrass, Product, Smartphone, BaseProduct
 
 
 def test_category_init(categories):
@@ -57,13 +57,13 @@ def test_price_setter():
 
 def test_count_categories():
     """тест счетчик категорий"""
-    Category.count_categories = 0
-    init_count = Category.count_categories
+    Category.category_count = 0
+    init_count = Category.category_count
     Category("Электроника", "Описание", [])
-    assert Category.count_categories == init_count + 1
+    assert Category.category_count == init_count + 1
     Category("Одежда", "Описание", [])
-    assert Category.count_categories == init_count + 2
-    assert Category.count_categories == 2
+    assert Category.category_count == init_count + 2
+    assert Category.category_count == 2
 
 
 def test_str_product(products_1, products_2):
@@ -123,3 +123,46 @@ def test_add_prod(smartphone_1, smartphone_2):
     assert isinstance(
         smartphone_1, Smartphone
     )  # проверка, что фикстура smartphone_1 использует класс Smartphone
+
+
+def test_add_product_invalid_type(categories):
+    """выбрасывает ошибку при добавлении не-продукта"""
+    with pytest.raises(ValueError):
+        categories.add_product("это не продукт")
+
+def test_base_product_cant_be_instantiated():
+    """нельзя создать объект абстрактного класса"""
+    with pytest.raises(TypeError):
+        BaseProduct("Ноутбук", "Игровой", 100000, 10)
+
+def test_product_inherits_from_base_product():
+    """проверка, что класс Product действительно является наследником BaseProduct"""
+    assert issubclass(Product, BaseProduct)
+
+def test_smartphone_inherits_from_product():
+    """Проверяет, что Smartphone — наследник Product и BaseProduct"""
+    assert issubclass(Smartphone, BaseProduct)
+
+def test_smartphone_inherits_from_product():
+    """Проверяет, что Smartphone — наследник Product и BaseProduct"""
+    assert issubclass(Smartphone, BaseProduct)
+
+def test_logmixin_prints_on_creation(capsys, products_1):
+    """Проверяет, что при создании объекта выводится сообщение"""
+    captured = capsys.readouterr()
+    assert captured.out != ""
+
+
+def test_logmixin_prints_class_name(capsys, products_1):
+    """Проверяет, что в сообщении указано имя класса"""
+    captured = capsys.readouterr()
+    assert "Product" in captured.out
+
+
+def test_logmixin_prints_parameters(capsys, products_1):
+    """Проверяет, что в сообщении указаны переданные параметры"""
+    captured = capsys.readouterr()
+    assert "Планшет" in captured.out
+    assert "Игровой" in captured.out
+
+

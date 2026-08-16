@@ -6,6 +6,7 @@ if __name__ == '__main__':
     product3 = Product("Xiaomi Redmi Note 11", "1024GB, Синий", 31000.0, 14)
 
     print(product1.name)
+    print("-->",repr(product1))
     print(product1.description)
     print(product1.price)
     print(product1.quantity)
@@ -41,4 +42,4 @@ if __name__ == '__main__':
     print(category2.products)
 
     print(Category.category_count)
-    print(Category.product_count)
+    print(Category.count_products)
