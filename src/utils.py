@@ -3,6 +3,7 @@ from abc import ABC, abstractmethod
 
 class BaseProduct(ABC):
     """"""
+
     @abstractmethod
     def __str__(self):
         pass
@@ -16,7 +17,9 @@ class LogMixin:
         self.quantity = quantity
 
     def __repr__(self) -> str:
-        return f"Product({self.name}, {self.description}, {self.__price}, {self.quantity})"
+        return (
+            f"Product({self.name}, {self.description}, {self.__price}, {self.quantity})"
+        )
 
 
 class Product(BaseProduct, LogMixin):
@@ -132,7 +135,7 @@ class Smartphone(Product):
     color: str  # цвет
 
     def __init__(
-            self, name, description, price, quantity, efficiency, model, memory, color
+        self, name, description, price, quantity, efficiency, model, memory, color
     ):
         super().__init__(name, description, price, quantity)
         self.efficiency = efficiency
@@ -149,7 +152,7 @@ class LawnGrass(Product):
     color: str  # цвет
 
     def __init__(
-            self, name, description, price, quantity, country, germination_period, color
+        self, name, description, price, quantity, country, germination_period, color
     ):
         super().__init__(name, description, price, quantity)
         self.country = country

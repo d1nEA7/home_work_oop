@@ -1,6 +1,6 @@
 import pytest
 
-from src.utils import Category, LawnGrass, Product, Smartphone, BaseProduct
+from src.utils import BaseProduct, Category, LawnGrass, Product, Smartphone
 
 
 def test_category_init(categories):
@@ -130,23 +130,28 @@ def test_add_product_invalid_type(categories):
     with pytest.raises(ValueError):
         categories.add_product("это не продукт")
 
+
 def test_base_product_cant_be_instantiated():
     """нельзя создать объект абстрактного класса"""
     with pytest.raises(TypeError):
         BaseProduct("Ноутбук", "Игровой", 100000, 10)
 
+
 def test_product_inherits_from_base_product():
     """проверка, что класс Product действительно является наследником BaseProduct"""
     assert issubclass(Product, BaseProduct)
 
+
 def test_smartphone_inherits_from_product():
     """Проверяет, что Smartphone — наследник Product и BaseProduct"""
     assert issubclass(Smartphone, BaseProduct)
+
 
 def test_smartphone_inherits_from_product():
     """Проверяет, что Smartphone — наследник Product и BaseProduct"""
     assert issubclass(Smartphone, Product)
     assert issubclass(Smartphone, BaseProduct)
+
 
 def test_logmixin_repr():
     """проверяет __repr__"""
@@ -162,4 +167,3 @@ def test_logmixin_called():
     assert hasattr(product, "description")
     assert hasattr(product, "_Product__price")
     assert hasattr(product, "quantity")
-
