@@ -69,9 +69,6 @@ class Product(BaseProduct, LogMixin):
             price_prod_2 = other.price * other.quantity
             return price_prod_1 + price_prod_2
 
-    # def __repr__(self) -> str:
-    #     return self.__str__()
-
 
 class Category:
     """Класс категории"""

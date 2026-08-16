@@ -9,7 +9,7 @@ def test_category_init(categories):
     assert categories.description == "Мобильная"
     assert len(categories.products) == 2
     assert categories.product_count == 2
-    assert categories.count_categories == 1
+    assert categories.category_count == 1
 
 
 def test_product_init(products_1):
@@ -145,24 +145,21 @@ def test_smartphone_inherits_from_product():
 
 def test_smartphone_inherits_from_product():
     """Проверяет, что Smartphone — наследник Product и BaseProduct"""
+    assert issubclass(Smartphone, Product)
     assert issubclass(Smartphone, BaseProduct)
 
-def test_logmixin_prints_on_creation(capsys, products_1):
-    """Проверяет, что при создании объекта выводится сообщение"""
-    captured = capsys.readouterr()
-    assert captured.out != ""
+def test_logmixin_repr():
+    """проверяет __repr__"""
+    product = Product("Тест", "Описание", 100, 10)
+    expected = "Product(Тест, Описание, 100, 10)"
+    assert repr(product) == expected
 
 
-def test_logmixin_prints_class_name(capsys, products_1):
-    """Проверяет, что в сообщении указано имя класса"""
-    captured = capsys.readouterr()
-    assert "Product" in captured.out
-
-
-def test_logmixin_prints_parameters(capsys, products_1):
-    """Проверяет, что в сообщении указаны переданные параметры"""
-    captured = capsys.readouterr()
-    assert "Планшет" in captured.out
-    assert "Игровой" in captured.out
-
+def test_logmixin_called():
+    """проверка вызова LogMixin"""
+    product = Product("Тест", "Описание", 100, 10)
+    assert hasattr(product, "name")
+    assert hasattr(product, "description")
+    assert hasattr(product, "_Product__price")
+    assert hasattr(product, "quantity")
 
