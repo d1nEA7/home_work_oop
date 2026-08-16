@@ -2,7 +2,7 @@ from abc import ABC, abstractmethod
 
 
 class BaseProduct(ABC):
-    """"""
+    """абстрактный класс """
 
     @abstractmethod
     def __str__(self):
@@ -10,6 +10,7 @@ class BaseProduct(ABC):
 
 
 class LogMixin:
+    """класс миксин"""
     def __init__(self, name, description, price, quantity):
         self.name = name
         self.description = description
