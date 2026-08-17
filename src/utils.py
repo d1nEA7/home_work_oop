@@ -2,25 +2,31 @@ from abc import ABC, abstractmethod
 
 
 class BaseProduct(ABC):
-    """абстрактный класс """
+    """абстрактный класс"""
 
     @abstractmethod
     def __str__(self):
         pass
 
+    @abstractmethod
+    def __init__(self, name, description, price, quantity):
+        pass
+
 
 class LogMixin:
     """класс миксин"""
-    def __init__(self, name, description, price, quantity):
-        self.name = name
-        self.description = description
-        self.__price = price
-        self.quantity = quantity
+
+    name: str
+    description: str
+    quantity: int
+    price: int
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        print(f"Создан объект класса {self.__class__.__name__} с параметрами: {args}")
 
     def __repr__(self) -> str:
-        return (
-            f"Product({self.name}, {self.description}, {self.__price}, {self.quantity})"
-        )
+        return f"Product({self.name}, {self.description}, {self.price}, {self.quantity})"
 
 
 class Product(BaseProduct, LogMixin):
@@ -32,7 +38,7 @@ class Product(BaseProduct, LogMixin):
     quantity: int  # Количество в наличии (целое число, штуки)
 
     def __init__(self, name, description, price, quantity):
-        super().__init__(name, description, price, quantity)
+        super(LogMixin).__init__()
         self.name = name
         self.description = description
         self.__price = price

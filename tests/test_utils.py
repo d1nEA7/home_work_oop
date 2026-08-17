@@ -142,9 +142,6 @@ def test_product_inherits_from_base_product():
     assert issubclass(Product, BaseProduct)
 
 
-def test_smartphone_inherits_from_product():
-    """Проверяет, что Smartphone — наследник Product и BaseProduct"""
-    assert issubclass(Smartphone, BaseProduct)
 
 
 def test_smartphone_inherits_from_product():
@@ -159,11 +156,11 @@ def test_logmixin_repr():
     expected = "Product(Тест, Описание, 100, 10)"
     assert repr(product) == expected
 
-
 def test_logmixin_called():
     """проверка вызова LogMixin"""
     product = Product("Тест", "Описание", 100, 10)
+    assert hasattr(product, "_Product__price")
     assert hasattr(product, "name")
     assert hasattr(product, "description")
-    assert hasattr(product, "_Product__price")
     assert hasattr(product, "quantity")
+
