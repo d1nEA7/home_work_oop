@@ -20,15 +20,18 @@ class LogMixin:
     description: str
     quantity: int
     price: int
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         print(f"Создан объект класса {self.__class__.__name__} с параметрами: {args}")
 
     def __repr__(self) -> str:
-        return f"Product({self.name}, {self.description}, {self.price}, {self.quantity})"
+        return (
+            f"Product({self.name}, {self.description}, {self.price}, {self.quantity})"
+        )
 
 
-class Product(LogMixin,BaseProduct):
+class Product(LogMixin, BaseProduct):
     """Класс товары"""
 
     name: str  # Название товара (строка)
