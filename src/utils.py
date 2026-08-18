@@ -38,7 +38,7 @@ class Product(BaseProduct, LogMixin):
     quantity: int  # Количество в наличии (целое число, штуки)
 
     def __init__(self, name, description, price, quantity):
-        super(LogMixin).__init__()
+        super().__init__(name, description, price, quantity)
         self.name = name
         self.description = description
         self.__price = price
