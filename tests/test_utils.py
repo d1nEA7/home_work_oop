@@ -163,10 +163,12 @@ def test_logmixin_called():
     assert hasattr(product, "description")
     assert hasattr(product, "quantity")
 
+
 def test_product_init_valid_quantity():
     """Создание продукта с правильным количеством"""
     product = Product("Ноутбук", "Игровой", 50000, 10)
     assert product.quantity == 10
+
 
 def test_product_init_zero_quantity():
     """Ошибка при создании продукта с quantity = 0"""
@@ -188,9 +190,3 @@ def test_middle_price_empty_category():
     """Для пустой категории возвращается 0"""
     category = Category("Пустая", "Описание", [])
     assert category.middle_price() == 0
-
-
-
-
-
-

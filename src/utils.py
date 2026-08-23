@@ -48,7 +48,6 @@ class Product(LogMixin, BaseProduct):
         self.__price = price
         self.quantity = quantity
 
-
     @classmethod
     def new_product(cls, data: dict) -> Product:
         """метод класса создание нового продукта"""
@@ -143,11 +142,10 @@ class Category:
             total_price = 0
             for product in self.__products:
                 total_price += product.price
-            middle_price_int = total_price/len(self.__products)
+            middle_price_int = total_price / len(self.__products)
             return middle_price_int
         except ZeroDivisionError:
             return 0
-
 
 
 class Smartphone(Product):
