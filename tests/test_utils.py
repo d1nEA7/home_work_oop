@@ -162,3 +162,35 @@ def test_logmixin_called():
     assert hasattr(product, "name")
     assert hasattr(product, "description")
     assert hasattr(product, "quantity")
+
+def test_product_init_valid_quantity():
+    """Создание продукта с правильным количеством"""
+    product = Product("Ноутбук", "Игровой", 50000, 10)
+    assert product.quantity == 10
+
+def test_product_init_zero_quantity():
+    """Ошибка при создании продукта с quantity = 0"""
+    with pytest.raises(ValueError):
+        Product("Ноутбук", "Игровой", 50000, 0)
+
+
+def test_middle_price_with_products():
+    """Средняя цена считается правильно"""
+    prod1 = Product("Товар 1", "Описание", 100, 10)
+    prod2 = Product("Товар 2", "Описание", 200, 10)
+    prod3 = Product("Товар 3", "Описание", 300, 10)
+    category = Category("Категория", "Описание", [prod1, prod2, prod3])
+
+    assert category.middle_price() == 200.0
+
+
+def test_middle_price_empty_category():
+    """Для пустой категории возвращается 0"""
+    category = Category("Пустая", "Описание", [])
+    assert category.middle_price() == 0
+
+
+
+
+
+
