@@ -40,11 +40,14 @@ class Product(LogMixin, BaseProduct):
     quantity: int  # Количество в наличии (целое число, штуки)
 
     def __init__(self, name, description, price, quantity):
+        if quantity <= 0:
+            raise ValueError("Товар с нулевым количеством не может быть добавлен")
         super().__init__(name, description, price, quantity)
         self.name = name
         self.description = description
         self.__price = price
         self.quantity = quantity
+
 
     @classmethod
     def new_product(cls, data: dict) -> Product:
@@ -53,10 +56,7 @@ class Product(LogMixin, BaseProduct):
         description = data.get("description")
         price = data.get("price")
         quantity = data.get("quantity")
-        if quantity is None  or  quantity <= 0:
-            raise ValueError("Товар с нулевым количеством не может быть добавлен")
-        else:
-            return Product(name, description, price, quantity)
+        return Product(name, description, price, quantity)
 
     @property
     def price(self):
