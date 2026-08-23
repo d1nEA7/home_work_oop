@@ -53,7 +53,10 @@ class Product(LogMixin, BaseProduct):
         description = data.get("description")
         price = data.get("price")
         quantity = data.get("quantity")
-        return Product(name, description, price, quantity)
+        if quantity is None  or  quantity <= 0:
+            raise ValueError("Товар с нулевым количеством не может быть добавлен")
+        else:
+            return Product(name, description, price, quantity)
 
     @property
     def price(self):
