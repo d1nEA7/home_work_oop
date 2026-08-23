@@ -137,6 +137,17 @@ class Category:
             total_quantity += product.quantity
         return f"{self.name}, количество продуктов: {total_quantity} шт."
 
+    def middle_price(self):
+        try:
+            total_price = 0
+            for product in self.__products:
+                total_price += product.price
+            middle_price_int = total_price/len(self.__products)
+            return f"Средний ценник всех товаров: {middle_price_int}"
+        except ZeroDivisionError:
+            return f"Средний ценник всех товаров: 0"
+
+
 
 class Smartphone(Product):
     """класс Смартфоны"""
